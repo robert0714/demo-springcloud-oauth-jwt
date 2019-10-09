@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  mysqldb:
+    container_name: mysql
+    image: mysql/mysql-server:8.0.16-1.1.11
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - $PWD/data/mysql:/var/lib/mysql
+    - $PWD/my55.cnf:/etc/my.cnf
+    - $PWD/temp_my.cnf.j2:/.my.cnf
+    environment:
+    - MYSQL_ROOT_PASSWORD=1qaz2wsx
+    - MYSQL_DATABASE=auth3
+    - MYSQL_USER=ecuser
+    - MYSQL_PASSWORD=1qaz2wsx
+    - EXTRA_OPTS="--lower_case_table_names=1"
+    - TZ=Asia/Taipei
+#    network_mode:  "host"
+    ports: 
+     - "3306:3306" 
+ 
