@@ -3,9 +3,10 @@ spring:
     name: oauth
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/auth3?useUnicode=true&characterEncoding=utf8
+#    url: jdbc:mysql://localhost:3306/auth3?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://192.168.99.110:3306/auth3?useUnicode=true&characterEncoding=utf8
     username: root
-    password: 1qaz2wsx
+    password: qazwsx
 server:
   port: ${port:5566}
 eureka:

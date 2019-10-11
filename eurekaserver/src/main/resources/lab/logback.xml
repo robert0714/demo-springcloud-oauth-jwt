@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<!-- <Pattern>%d{yy-MM-dd HH:mm:ss} [%thread] %-5level %logger{10} - %msg%n</Pattern> -->
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss} [%t][%-5level] %logger{10}.%M:%L - %msg%n</Pattern>
+		</layout>
+	</appender>
+
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	    <file>${HOME}/logs/maas-eurekaserver.log</file>
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <fileNamePattern>${HOME}/logs/maas-eurekaserver.%d{yyyy-MM}.%i.log</fileNamePattern>
+	        <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+	            <maxFileSize>20MB</maxFileSize>
+	        </timeBasedFileNamingAndTriggeringPolicy>
+	    </rollingPolicy>
+	    <encoder>
+	        <pattern>%d{yyyy-MM-dd HH:mm:ss} [%t][%-5level] %c{1.}.%M:%L - %msg%n</pattern>
+	    </encoder>
+	</appender>
+
+	<logger name="develop.competency" level="info" />
+
+	<root level="info">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+	</root>
+	
+</configuration>
+

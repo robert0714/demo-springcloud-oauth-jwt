@@ -1,0 +1,93 @@
+# Yureka Server Configuration
+server:
+  port: ${vcap.application.port:8761}   # HTTP port
+
+info:
+  component: Discovery Server
+
+eureka:
+    instance:
+     #     hostname: localhost
+          hostname: 
+          prefer-ip-address: true
+          preferIpAddress: true
+          leaseRenewalIntervalInSeconds: 10
+          health-check-url-path: /actuator/health
+          metadata-map:
+            startup: ${random.int}    #needed to trigger info and endpoint update after restart
+    client:
+        registryFetchIntervalSeconds: 5    
+        registerWithEureka: true
+        fetchRegistry: true
+        serviceUrl:
+          defaultZone: ${vcap.services.${PREFIX:}eureka.credentials.uri:http://user:password@localhost:8761}/eureka/
+    server:
+        waitTimeInMsWhenSyncEmpty: 0
+        enableSelfPreservation: false # only false.. 
+spring:
+  thymeleaf:
+    enabled: false     # Disable Thymeleaf
+  cloud:
+    inetutils:
+      ignoredInterfaces:
+        - docker0
+        - veth.*
+        - enp0s3
+        - lo
+      preferredNetworks:
+        - 172.21.3.*
+management: 
+  server:
+     servlet:
+       context-path: 
+  endpoints:
+    web:
+      base-path: 
+      exposure:
+        include: "*"
+  endpoint:
+    env:
+      enabled: true 
+    health:
+      enabled: true
+      show-details: ALWAYS
+    heapdump:
+      enabled: true
+    logfile:
+      enabled: true
+    auditevents:
+      enabled: true
+    conditions:
+      enabled: true
+    beans:
+      enabled: true
+    info:
+      enabled: true
+    jolokia:
+      enabled: true
+    loggers:
+      enabled: true
+    mappings:
+      enabled: true
+    prometheus:
+      enabled: false
+    refresh:
+      enabled: true
+    restart:
+      enabled: true
+    resume:
+      enabled: true
+    metrics:
+      enabled: true
+    scheduledtasks:
+      enabled: true
+    pause:
+      enabled: true
+    service-registry:
+      enabled: true
+    sessions:
+      enabled: true
+    shutdown:
+      enabled: true
+    threaddump:
+      enabled: true
