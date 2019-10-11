@@ -2,7 +2,7 @@
 
 啟動後  
 
-取得授權
+取得授權 (YXBwOjEyMzQ1Ng== 是Base64編碼過後的，也就是app:123456，oauth_client_details上的帳號與密碼,user_account 則是記載username=admin&password=123456的資訊)
 ```
 curl -X POST \
   http://localhost:5566/oauth/token \

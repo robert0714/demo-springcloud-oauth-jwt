@@ -3,6 +3,7 @@ package com.example.demo.config;
 import com.example.demo.repository.OauthClientDetailsRepo;
 import com.example.demo.repository.OauthClientGrantTypesRepo;
 import com.example.demo.repository.ResourceScopRepo;
+import com.example.demo.security.NtUserDetailsAuthenticationProvider;
 import com.example.demo.service.NtTokenServices;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.ldap.authentication.ad.ActiveDirectoryLdapAuthenticationProvider;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
@@ -23,8 +25,15 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 @Configuration
 public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @NonNull
-    private AuthenticationProvider authenticationProvider;
+//    @NonNull
+//    private AuthenticationProvider authenticationProvider;
+	
+	@NonNull
+    private ActiveDirectoryLdapAuthenticationProvider adProvider;
+	
+	@NonNull
+    private NtUserDetailsAuthenticationProvider  ntProvider;
+    
     @NonNull
     private TokenStore tokenStore;
     @NonNull
@@ -40,7 +49,9 @@ public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authenticationProvider);
+//        auth.authenticationProvider(authenticationProvider);
+    	 auth.authenticationProvider(adProvider);
+    	 auth.authenticationProvider(ntProvider);
     }
 
     @Override

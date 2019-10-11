@@ -1,5 +1,9 @@
 /target/
 !.mvn/wrapper/maven-wrapper.jar
+db-docker-compse/data/
+*/target/
+
+
 
 ### STS ###
 .apt_generated
