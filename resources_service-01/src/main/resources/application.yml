@@ -9,7 +9,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
-    enabled: true
+    enabled: false
   instance:
     prefer-ip-address: true
 #    nonSecurePortEnabled: false
@@ -26,13 +26,14 @@ management:
         include: '*'
 security:
   oauth2:
-    client:
-      clientId: app
-      clientSecret: 123456
-      accessTokenUri: http://localhost:5566/oauth/token
-      userAuthorizationUri: https://www.facebook.com/dialog/oauth
-      tokenName: oauth_token
-      authenticationScheme: query
-      clientAuthenticationScheme: form
-    resource:
-      userInfoUri: https://graph.facebook.com/me
+    authorization:
+      jwt:
+        key-value: '我難過的是放棄你放棄愛放棄的夢被打碎忍住悲哀'
+#    client:
+#      clientId: app
+#      clientSecret: 123456
+#      accessTokenUri: http://localhost:5566/oauth/token
+#      tokenName: oauth_token
+#      authenticationScheme: query
+#      clientAuthenticationScheme: form
+    
