@@ -1,0 +1,38 @@
+spring:  
+  application:
+    name: product-service
+
+server:  
+  port: ${PORT:8093}
+  
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    enabled: true
+  instance:
+    prefer-ip-address: true
+#    nonSecurePortEnabled: false
+#    securePortEnabled: true
+#    securePort: ${PORT:8093}
+#    statusPageUrl: https://localhost:${eureka.instance.securePort}/info
+#    healthCheckUrl: https://localhost:${eureka.instance.securePort}/health
+#    homePageUrl: https://localhost:${eureka.instance.securePort}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+security:
+  oauth2:
+    client:
+      clientId: app
+      clientSecret: 123456
+      accessTokenUri: http://localhost:5566/oauth/token
+      userAuthorizationUri: https://www.facebook.com/dialog/oauth
+      tokenName: oauth_token
+      authenticationScheme: query
+      clientAuthenticationScheme: form
+    resource:
+      userInfoUri: https://graph.facebook.com/me

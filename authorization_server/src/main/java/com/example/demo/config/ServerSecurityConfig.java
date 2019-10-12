@@ -50,7 +50,9 @@ public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.authenticationProvider(authenticationProvider);
-    	 auth.authenticationProvider(adProvider);
+    	//LDAP or AD
+//    	 auth.authenticationProvider(adProvider);
+    	 
     	 auth.authenticationProvider(ntProvider);
     }
 
