@@ -27,3 +27,5 @@ db-docker-compse/data/
 /dist/
 /nbdist/
 /.nb-gradle/
+
+logs

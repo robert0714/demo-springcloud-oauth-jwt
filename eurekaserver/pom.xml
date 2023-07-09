@@ -5,8 +5,9 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.9.RELEASE</version>
-	</parent>
+		<version>2.7.13</version>
+		<!-- https://spring.io/blog/2022/05/27/spring-cloud-2021-0-3-is-available-compatible-with-spring-boot-2-7-0 -->
+    </parent>
 	<artifactId>demo-springcloud-oauth-jwt-eurekaserver</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
@@ -14,7 +15,10 @@
 	<description>eureka-server</description>
 	<properties>
 		<env>dev</env>
-		<spring-cloud.version>Greenwich.SR3</spring-cloud.version>
+		<!-- <spring-cloud.version>Greenwich.SR3</spring-cloud.version> -->
+        <!-- https://spring.io/blog/2022/05/27/spring-cloud-2021-0-3-is-available-compatible-with-spring-boot-2-7-0 -->
+        <!-- https://github.com/spring-cloud/spring-cloud-release/wiki/Supported-Versions -->
+        <spring-cloud.version>2021.0.8</spring-cloud.version>
 		<docker-maven-plugin.version>0.31.0</docker-maven-plugin.version>
 		<start-class>develop.eurekaserver.EurekaserverApplication</start-class>
 		<docker.registry.name>localhost:5000/</docker.registry.name>
